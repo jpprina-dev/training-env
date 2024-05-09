@@ -11,6 +11,9 @@ pendulum = "^3.0.0"
 click = "^8.1.7"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

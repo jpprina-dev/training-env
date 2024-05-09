@@ -1,0 +1,1 @@
+from data_project.main import main
