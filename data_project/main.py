@@ -1,9 +1,10 @@
-import click
-from . import __version__
 from datetime import datetime
 
+import click
+
+
 def datetime_valid(ctx, param, value):
-    """ Date in ISO Format Validation """
+    """Date in ISO Format Validation"""
     try:
         # Validation required because --date_end is not a required option
         if value:
@@ -16,14 +17,19 @@ def datetime_valid(ctx, param, value):
 
 
 @click.command()
-@click.option('--hello', prompt=True)
-@click.option('--date', required=True, type=str, callback=datetime_valid,
-              help='ISO8601 format date')
-@click.version_option(version=__version__)
-@click.argument('coin_id')
+@click.option("--hello", prompt=True)
+# @click.option(
+#     "--date",
+#     required=True,
+#     type=str,
+#     callback=datetime_valid,
+#     help="ISO8601 format date",
+# )
+@click.version_option()
+# @click.argument("coin_id")
 def main(hello):
     if hello:
-        click.echo(f'Hello {hello}!')
+        click.echo(f"Hello {hello}!")
 
 
 if __name__ == "__main__":
