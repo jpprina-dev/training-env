@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "data-project"
+version = "0.1.0"
+description = "Crypto Token small data project"
+authors = ["Juan Prina <jpprina@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pendulum = "^3.0.0"
+click = "^8.1.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
