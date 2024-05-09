@@ -21,8 +21,15 @@ pre-commit = "^3.7.0"
 
 [tool.black]
 target-version = ["py39"]
-line-length = 100
+line-length = 99
 color = true
+
+[tool.isort]
+py_version = 39
+line_length = 99
+multi_line_output = 3
+indent = 4
+color_output = true
 
 
 [build-system]
