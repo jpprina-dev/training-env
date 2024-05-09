@@ -18,6 +18,13 @@ isort = "^5.13.2"
 pydocstyle = "^6.3.0"
 pre-commit = "^3.7.0"
 
+
+[tool.black]
+target-version = ["py39"]
+line-length = 100
+color = true
+
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
