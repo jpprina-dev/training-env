@@ -16,7 +16,7 @@ repos:
       - id: flake8
         name: flake8
         entry: poetry run flake8
-        language: system
+        language: python
 
   - repo: local
     hooks:
@@ -31,6 +31,14 @@ repos:
       - id: black
         name: black
         entry: poetry run black --config pyproject.toml
+        types: [python]
+        language: system
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: poetry run mypy ./
         types: [python]
         language: system
 
