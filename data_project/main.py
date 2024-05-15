@@ -1,3 +1,4 @@
+import logging
 import os
 from datetime import datetime
 
@@ -12,6 +13,10 @@ __version__ = os.getenv("CLI_VERSION")
 API_BASE = os.getenv("API_BASE")
 BASE_PATH = os.getcwd()
 OUTPUT_PATH = os.path.join(BASE_PATH, os.getenv("DATA_PATH"))
+LOG_LEVEL = os.getenv("LOG_LEVEL")
+
+logging.basicConfig(format="%(asctime)s - %(message)s", level=LOG_LEVEL)
+logger = logging.getLogger("main")
 
 
 def datetime_valid(ctx, param, value):
@@ -36,14 +41,17 @@ def datetime_valid(ctx, param, value):
     help="ISO8601 format date",
 )
 @click.version_option(__version__)
-@click.option("--coin_id", type=str, required=False)
+@click.argument("coin_id")
 def main(date, coin_id):
+    logger.info(f"Start processing {coin_id} for {date}")
     # Extract
     url = generate_url(API_BASE, coin_id, date)
+    logger.info(f"Quering URL: {url}")
     data = downloaw_asset(url)
 
-    dir = os.path.join(OUTPUT_PATH, f"{coin_id}-{date}.json")
     # Load
+    dir = os.path.join(OUTPUT_PATH, f"{coin_id}-{date}.json")
+    logger.info(f"Saving data to {dir}")
     load_data(dir, data)
 
 
