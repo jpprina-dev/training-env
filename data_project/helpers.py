@@ -1,4 +1,5 @@
 import json
+from typing import Any, Dict
 
 import requests
 
@@ -9,7 +10,7 @@ def generate_url(api_base: str, identifier: str, date_str: str) -> str:
     return url
 
 
-def downloaw_asset(url: str) -> json:
+def downloaw_asset(url: str) -> Dict[str, Any]:
     """Download coin asset"""
     with requests.get(url) as response:
         # Rise Error if failed
@@ -18,7 +19,7 @@ def downloaw_asset(url: str) -> json:
         return response.json()
 
 
-def load_data(dir: str, data: json) -> None:
+def load_data(dir: str, data: Dict[str, Any]) -> None:
     # Save as json file
     with open(dir, "w") as f:
         json.dump(data, f, indent=4)

@@ -12,7 +12,7 @@ load_dotenv()
 __version__ = os.getenv("CLI_VERSION")
 API_BASE = os.getenv("API_BASE")
 BASE_PATH = os.getcwd()
-OUTPUT_PATH = os.path.join(BASE_PATH, os.getenv("DATA_PATH"))
+OUTPUT_PATH = os.path.join(BASE_PATH, os.getenv("DATA_PATH", ""))
 LOG_LEVEL = os.getenv("LOG_LEVEL")
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=LOG_LEVEL)
